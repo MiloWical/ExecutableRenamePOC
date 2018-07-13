@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExecutableRename", "ExecutableRename\ExecutableRename.csproj", "{3E59EE56-AA99-4A61-85D7-C8D3229261ED}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5E9C8A42-970A-4888-93A6-9571221561DA} = {5E9C8A42-970A-4888-93A6-9571221561DA}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExecutionClient", "ExecutionClient\ExecutionClient.csproj", "{5E9C8A42-970A-4888-93A6-9571221561DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3E59EE56-AA99-4A61-85D7-C8D3229261ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E59EE56-AA99-4A61-85D7-C8D3229261ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E59EE56-AA99-4A61-85D7-C8D3229261ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E59EE56-AA99-4A61-85D7-C8D3229261ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E9C8A42-970A-4888-93A6-9571221561DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E9C8A42-970A-4888-93A6-9571221561DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E9C8A42-970A-4888-93A6-9571221561DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E9C8A42-970A-4888-93A6-9571221561DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CEEF416C-A819-4090-9FF6-FEC34811FC16}
+	EndGlobalSection
+EndGlobal
