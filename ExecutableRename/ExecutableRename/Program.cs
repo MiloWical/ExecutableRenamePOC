@@ -17,8 +17,9 @@
 
         public static void Main(string[] args)
         {
-            var sourceExe = Directory.GetCurrentDirectory() + @"\..\..\..\..\Client\ExecutionClient.exe";
-            var sourceConfig = Directory.GetCurrentDirectory() + @"\..\..\..\..\Client\ExecutionClient.exe.config";
+            var sourceDirectory = Directory.GetCurrentDirectory() + @"\..\..\..\..\Client\";
+            var sourceExeName = "ExecutionClient.exe";
+            var sourceConfigName = sourceExeName + ".config";
 
             var newConfigurations = new[]
             {
@@ -34,9 +35,14 @@
                 }
             };
 
+            Console.WriteLine("Copying initial files '{0}' and '{1}'\nfrom: {2}", sourceExeName, sourceConfigName, sourceDirectory);
+
+            CopyFileToLocalBinDirectory(sourceDirectory + sourceExeName, sourceExeName);
+            CopyFileToLocalBinDirectory(sourceDirectory + sourceConfigName, sourceConfigName);
+
             Console.WriteLine("Initial process starting...\n");
 
-            ExecuteProcess(sourceExe);
+            ExecuteProcess(sourceExeName);
 
             Console.WriteLine("\nInitial process complete.\nBeginning reconfigured processes.\nPress any key to continue...\n");
             Console.ReadKey();
@@ -45,10 +51,10 @@
             {
                 var exeName = GenerateExeName();
 
-                CopyAndRenameExe(sourceExe, exeName);
+                CopyFileToLocalBinDirectory(sourceDirectory + sourceExeName, exeName);
                 Console.WriteLine("\nNew executable generated: {0}", exeName);
 
-                WriteNewConfig(sourceConfig, exeName + ".config", config.Message, config.Color);
+                WriteNewConfig(sourceDirectory + sourceConfigName, exeName + ".config", config.Message, config.Color);
                 Console.WriteLine("New executable confguration generated: {0}", exeName + ".config");
                 Console.WriteLine("\tMessage: '{0}'", config.Message);
                 Console.WriteLine("\tColor: '{0}'", config.Color);
@@ -67,7 +73,12 @@
                 Console.ReadKey();
             }
 
-            Console.WriteLine("\nAll processes complete. Press any key to quit...");
+            Console.WriteLine("\nAll processes complete. Deleting initial process files.");
+
+            RemoveExeAndConfig(sourceExeName);
+
+            Console.WriteLine("File deletion complete. Verify that all copied test files have been removed.");
+            Console.WriteLine("Press any key to quit...");
 
             Console.ReadKey();
         }
@@ -78,9 +89,9 @@
             return DateTime.Now.ToString("mmssffffff") + ".exe";
         }
 
-        private static void CopyAndRenameExe(string sourceFile, string destinationFileName)
+        private static void CopyFileToLocalBinDirectory(string sourcePathAndFilename, string destinationFileName)
         {
-            File.Copy(sourceFile, $@"{Directory.GetCurrentDirectory()}\{destinationFileName}");
+            File.Copy(sourcePathAndFilename, $@"{Directory.GetCurrentDirectory()}\{destinationFileName}");
         }
 
         private static void WriteNewConfig(string sourceFile, string destinationFileName, string message, string color)
